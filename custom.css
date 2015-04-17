@@ -1,0 +1,33 @@
+/*********************************************
+ * CUSTOM STYLES
+ *********************************************/
+* {
+  box-sizing: border-box;
+}
+
+.reveal section img {
+  border: none;
+  box-shadow: none;
+}
+
+section .left {
+  float: left;
+  text-align: left;
+  width: 50%;
+}
+section .right {
+  float: right;
+  width: 50%;
+}
+section .triptych-left {
+  float: left;
+  width: 33.333%;
+}
+section .triptych-center {
+  float: left;
+  width: 33.333%;
+}
+section .triptych-right {
+  float: left;
+  width: 33.333%;
+}
