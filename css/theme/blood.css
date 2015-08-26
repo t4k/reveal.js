@@ -15,6 +15,7 @@
  *********************************************/
 body {
   background: #222;
+<<<<<<< .merge_file_E4oXQU
   background: -moz-radial-gradient(center, circle cover, #626262 0%, #222 100%);
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #626262), color-stop(100%, #222));
   background: -webkit-radial-gradient(center, circle cover, #626262 0%, #222 100%);
@@ -22,6 +23,9 @@ body {
   background: -ms-radial-gradient(center, circle cover, #626262 0%, #222 100%);
   background: radial-gradient(center, circle cover, #626262 0%, #222 100%);
   background-color: #2b2b2b; }
+=======
+  background-color: #222; }
+>>>>>>> .merge_file_A6Za8Y
 
 .reveal {
   font-family: Ubuntu, 'sans-serif';
@@ -167,6 +171,12 @@ body {
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
   border-bottom: 1px solid; }
+
+.reveal table th[align="center"], .reveal table td[align="center"] {
+  text-align: center; }
+
+.reveal table th[align="right"], .reveal table td[align="right"] {
+  text-align: right; }
 
 .reveal table tr:last-child td {
   border-bottom: none; }

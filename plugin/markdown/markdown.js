@@ -26,7 +26,11 @@
 		});
 	}
 
+<<<<<<< .merge_file_YQH4Io
 	var DEFAULT_SLIDE_SEPARATOR = '^\n---\n$',
+=======
+	var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
+>>>>>>> .merge_file_cvWURJ
 		DEFAULT_NOTES_SEPARATOR = 'note:',
 		DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = '\\\.element\\\s*?(.+?)$',
 		DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$';
@@ -50,7 +54,11 @@
 			text = text.replace( new RegExp('\\n?\\t{' + leadingTabs + '}','g'), '\n' );
 		}
 		else if( leadingWs > 1 ) {
+<<<<<<< .merge_file_YQH4Io
 			text = text.replace( new RegExp('\\n? {' + leadingWs + '}'), '\n' );
+=======
+			text = text.replace( new RegExp('\\n? {' + leadingWs + '}', 'g'), '\n' );
+>>>>>>> .merge_file_cvWURJ
 		}
 
 		return text;
@@ -76,7 +84,11 @@
 			if( /data\-(markdown|separator|vertical|notes)/gi.test( name ) ) continue;
 
 			if( value ) {
+<<<<<<< .merge_file_YQH4Io
 				result.push( name + '=' + value );
+=======
+				result.push( name + '="' + value + '"' );
+>>>>>>> .merge_file_cvWURJ
 			}
 			else {
 				result.push( name );

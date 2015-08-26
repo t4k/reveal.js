@@ -107,6 +107,7 @@ body {
 	transform: scale( 0.1 );
 
 	&.visible {
+<<<<<<< .merge_file_wvG9K4
 		transform: scale( 1 );
 	}
 }
@@ -116,6 +117,9 @@ body {
 
 	&.visible {
 		transform: rotateX( 0 );
+=======
+		transform: none;
+>>>>>>> .merge_file_vJFAzq
 	}
 }
 
@@ -352,6 +356,7 @@ body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 	touch-action: none;
 }
 
@@ -447,6 +452,7 @@ body {
 
 
 /*********************************************
+<<<<<<< .merge_file_wvG9K4
  * SLIDE TRANSITION
  * Aliased 'linear' for backwards compatibility
  *********************************************/
@@ -480,14 +486,76 @@ body {
 .reveal .slides>section>section[data-transition=linear].future,
 .reveal.linear .slides>section>section:not([data-transition]).future {
 	transform: translate(0, 150%);
+=======
+ * Mixins for readability of transitions
+ *********************************************/
+
+@mixin transition-global($style) {
+	.reveal .slides>section[data-transition=#{$style}],
+	.reveal.#{$style} .slides>section:not([data-transition]) {
+		@content;
+	}
+}
+@mixin transition-horizontal-past($style) {
+	.reveal .slides>section[data-transition=#{$style}].past,
+	.reveal .slides>section[data-transition~=#{$style}-out].past,
+	.reveal.#{$style} .slides>section:not([data-transition]).past {
+		@content;
+	}
+}
+@mixin transition-horizontal-future($style) {
+	.reveal .slides>section[data-transition=#{$style}].future,
+	.reveal .slides>section[data-transition~=#{$style}-in].future,
+	.reveal.#{$style} .slides>section:not([data-transition]).future {
+		@content;
+	}
 }
 
+@mixin transition-vertical-past($style) {
+	.reveal .slides>section>section[data-transition=#{$style}].past,
+	.reveal .slides>section>section[data-transition~=#{$style}-out].past,
+	.reveal.#{$style} .slides>section>section:not([data-transition]).past {
+		@content;
+	}
+}
+@mixin transition-vertical-future($style) {
+	.reveal .slides>section>section[data-transition=#{$style}].future,
+	.reveal .slides>section>section[data-transition~=#{$style}-in].future,
+	.reveal.#{$style} .slides>section>section:not([data-transition]).future {
+		@content;
+	}
+>>>>>>> .merge_file_vJFAzq
+}
+
+/*********************************************
+ * SLIDE TRANSITION
+ * Aliased 'linear' for backwards compatibility
+ *********************************************/
+
+@each $stylename in slide, linear {
+	.reveal.#{$stylename} section {
+		backface-visibility: hidden;
+	}
+	@include transition-horizontal-past(#{$stylename}) {
+		transform: translate(-150%, 0);
+	}
+	@include transition-horizontal-future(#{$stylename}) {
+		transform: translate(150%, 0);
+	}
+	@include transition-vertical-past(#{$stylename}) {
+		transform: translate(0, -150%);
+	}
+	@include transition-vertical-future(#{$stylename}) {
+		transform: translate(0, 150%);
+	}
+}
 
 /*********************************************
  * CONVEX TRANSITION
  * Aliased 'default' for backwards compatibility
  *********************************************/
 
+<<<<<<< .merge_file_wvG9K4
 .reveal .slides>section[data-transition=default].past,
 .reveal.default .slides>section:not([data-transition]).past,
 .reveal .slides>section[data-transition=convex].past,
@@ -512,6 +580,21 @@ body {
 .reveal .slides>section>section[data-transition=convex].future,
 .reveal.convex .slides>section>section:not([data-transition]).future {
 	transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+=======
+@each $stylename in default, convex {
+	@include transition-horizontal-past(#{$stylename}) {
+		transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+	}
+	@include transition-horizontal-future(#{$stylename}) {
+		transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+	}
+	@include transition-vertical-past(#{$stylename}) {
+		transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
+	}
+	@include transition-vertical-future(#{$stylename}) {
+		transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+	}
+>>>>>>> .merge_file_vJFAzq
 }
 
 
@@ -519,6 +602,7 @@ body {
  * CONCAVE TRANSITION
  *********************************************/
 
+<<<<<<< .merge_file_wvG9K4
 .reveal .slides>section[data-transition=concave].past,
 .reveal.concave .slides>section:not([data-transition]).past {
 	transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
@@ -534,6 +618,18 @@ body {
 }
 .reveal .slides>section>section[data-transition=concave].future,
 .reveal.concave .slides>section>section:not([data-transition]).future {
+=======
+@include transition-horizontal-past(concave) {
+	transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
+}
+@include transition-horizontal-future(concave) {
+	transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
+}
+@include transition-vertical-past(concave) {
+	transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
+}
+@include transition-vertical-future(concave) {
+>>>>>>> .merge_file_vJFAzq
 	transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
 }
 
@@ -542,6 +638,7 @@ body {
  * ZOOM TRANSITION
  *********************************************/
 
+<<<<<<< .merge_file_wvG9K4
 .reveal .slides>section[data-transition=zoom],
 .reveal.zoom .slides>section:not([data-transition]) {
 	transition-timing-function: ease;
@@ -564,6 +661,23 @@ body {
 }
 .reveal .slides>section>section[data-transition=zoom].future,
 .reveal.zoom .slides>section>section:not([data-transition]).future {
+=======
+@include transition-global(zoom) {
+	transition-timing-function: ease;
+}
+@include transition-horizontal-past(zoom) {
+	visibility: hidden;
+	transform: scale(16);
+}
+@include transition-horizontal-future(zoom) {
+	visibility: hidden;
+	transform: scale(0.2);
+}
+@include transition-vertical-past(zoom) {
+	transform: translate(0, -150%);
+}
+@include transition-vertical-future(zoom) {
+>>>>>>> .merge_file_vJFAzq
 	transform: translate(0, 150%);
 }
 
@@ -732,8 +846,12 @@ body {
  * NO TRANSITION
  *********************************************/
 
+<<<<<<< .merge_file_wvG9K4
 .reveal .slides section[data-transition=none],
 .reveal.none .slides section:not([data-transition]) {
+=======
+@include transition-global(none) {
+>>>>>>> .merge_file_vJFAzq
 	transform: none;
 	transition: none;
 }
@@ -857,7 +975,11 @@ body {
  * PER-SLIDE BACKGROUNDS
  *********************************************/
 
+<<<<<<< .merge_file_wvG9K4
 .reveal>.backgrounds {
+=======
+.reveal .backgrounds {
+>>>>>>> .merge_file_vJFAzq
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -1023,6 +1145,74 @@ body {
 }
 .reveal[data-transition-speed="slow"]>.backgrounds .slide-background {
 	transition-duration: 1200ms;
+}
+
+
+/*********************************************
+ * OVERVIEW
+ *********************************************/
+
+.reveal.overview {
+	perspective-origin: 50% 50%;
+	perspective: 700px;
+
+	.slides section {
+		height: 700px;
+		opacity: 1 !important;
+		overflow: hidden;
+		visibility: visible !important;
+		cursor: pointer;
+		box-sizing: border-box;
+	}
+	.slides section:hover,
+	.slides section.present {
+		outline: 10px solid rgba(150,150,150,0.4);
+		outline-offset: 10px;
+	}
+	.slides section .fragment {
+		opacity: 1;
+		transition: none;
+	}
+	.slides section:after,
+	.slides section:before {
+		display: none !important;
+	}
+	.slides>section.stack {
+		padding: 0;
+		top: 0 !important;
+		background: none;
+		outline: none;
+		overflow: visible;
+	}
+
+	.backgrounds {
+		perspective: inherit;
+	}
+
+	.backgrounds .slide-background {
+		opacity: 1;
+		visibility: visible;
+
+		// This can't be applied to the slide itself in Safari
+		outline: 10px solid rgba(150,150,150,0.1);
+		outline-offset: 10px;
+	}
+}
+
+// Disable transitions transitions while we're activating
+// or deactivating the overview mode.
+.reveal.overview .slides section,
+.reveal.overview-deactivating .slides section {
+	transition: none;
+}
+
+.reveal.overview .backgrounds .slide-background,
+.reveal.overview-deactivating .backgrounds .slide-background {
+	transition: none;
+}
+
+.reveal.overview-animated .slides {
+	transition: transform 0.4s ease;
 }
 
 

@@ -24,6 +24,8 @@ $blood: #a23;
 $coal: #222;
 $codeBackground: #23241f;
 
+$backgroundColor: $coal;
+
 // Main text
 $mainFont: Ubuntu, 'sans-serif';
 $mainFontSize: 36px;
@@ -61,7 +63,11 @@ $selectionColor: #fff;
     text-shadow: 1px 1px $coal;
 }
 
+<<<<<<< .merge_file_szj6PT
 .reveal h1, 
+=======
+.reveal h1,
+>>>>>>> .merge_file_22PGv3
 .reveal h2,
 .reveal h3,
 .reveal h4,

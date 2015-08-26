@@ -28,7 +28,11 @@ var RevealNotes = (function() {
 				notesPopup.postMessage( JSON.stringify( {
 					namespace: 'reveal-notes',
 					type: 'connect',
+<<<<<<< .merge_file_6sJl4N
 					url: window.location.protocol + '//' + window.location.host + window.location.pathname,
+=======
+					url: window.location.protocol + '//' + window.location.host + window.location.pathname + window.location.search,
+>>>>>>> .merge_file_nXxcBS
 					state: Reveal.getState()
 				} ), '*' );
 			}, 500 );

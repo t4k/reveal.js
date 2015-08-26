@@ -17,7 +17,11 @@ Shared utility functions.
 Declares a set of custom variables that the template file (step 4) expects. Can be overridden in step 3.
 
 3. **Override**
+<<<<<<< .merge_file_7LbTUm
 This is where you override the default theme. Either by specifying variables (see [settings.scss](https://github.com/hakimel/reveal.js/blob/master/css/theme/template/settings.scss) for reference) or by adding full selectors with hardcoded styles.
+=======
+This is where you override the default theme. Either by specifying variables (see [settings.scss](https://github.com/hakimel/reveal.js/blob/master/css/theme/template/settings.scss) for reference) or by adding any selectors and styles you please.
+>>>>>>> .merge_file_FcA0zJ
 
 4. **Include [/css/theme/template/theme.scss](https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss)**
 The template theme file which will generate final CSS output based on the currently defined variables.

@@ -1,6 +1,8 @@
 /* global module:false */
 module.exports = function(grunt) {
 	var port = grunt.option('port') || 8000;
+	var base = grunt.option('base') || '.';
+
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -36,6 +38,7 @@ module.exports = function(grunt) {
 				}
 			},
 			themes: {
+<<<<<<< .merge_file_bKnWNq
 				files: {
 					'css/theme/black.css': 'css/theme/source/black.scss',
 					'css/theme/white.css': 'css/theme/source/white.scss',
@@ -49,6 +52,17 @@ module.exports = function(grunt) {
 					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
 					'css/theme/blood.css': 'css/theme/source/blood.scss'
 				}
+=======
+				files: [
+					{
+						expand: true,
+						cwd: 'css/theme/source',
+						src: ['*.scss'],
+						dest: 'css/theme',
+						ext: '.css'
+					}
+				]
+>>>>>>> .merge_file_hD2Y8n
 			}
 		},
 
@@ -95,9 +109,15 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: port,
+<<<<<<< .merge_file_bKnWNq
 					base: '.',
                     livereload: true,
                     open: true
+=======
+					base: base,
+					livereload: true,
+					open: true
+>>>>>>> .merge_file_hD2Y8n
 				}
 			}
 		},
@@ -114,9 +134,15 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
+<<<<<<< .merge_file_bKnWNq
             options: {
                 livereload: true
             },
+=======
+			options: {
+				livereload: true
+			},
+>>>>>>> .merge_file_hD2Y8n
 			js: {
 				files: [ 'Gruntfile.js', 'js/reveal.js' ],
 				tasks: 'js'
@@ -129,9 +155,15 @@ module.exports = function(grunt) {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
 			},
+<<<<<<< .merge_file_bKnWNq
             html: {
                 files: [ 'index.html']
             }
+=======
+			html: {
+				files: [ 'index.html']
+			}
+>>>>>>> .merge_file_hD2Y8n
 		}
 
 	});

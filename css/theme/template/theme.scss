@@ -199,8 +199,22 @@ body {
 	border-bottom: 1px solid;
 }
 
+.reveal table th[align="center"],
+.reveal table td[align="center"] {
+	text-align: center;
+}
+
+.reveal table th[align="right"],
+.reveal table td[align="right"] {
+	text-align: right;
+}
+
 .reveal table tr:last-child td {
+<<<<<<< .merge_file_HiODzj
     border-bottom: none;
+=======
+	border-bottom: none;
+>>>>>>> .merge_file_Z4C8Zg
 }
 
 .reveal sup {
@@ -333,7 +347,11 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
+<<<<<<< .merge_file_HiODzj
   color: $linkColor;
+=======
+	color: $linkColor;
+>>>>>>> .merge_file_Z4C8Zg
 }
 
 
