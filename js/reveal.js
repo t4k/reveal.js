@@ -30,11 +30,7 @@
 		VERTICAL_SLIDES_SELECTOR = '.slides>section.present>section',
 		HOME_SLIDE_SELECTOR = '.slides>section:first-of-type',
 
-<<<<<<< .merge_file_GEaPd7
-		// Configurations defaults, can be overridden at initialization time
-=======
 		// Configuration defaults, can be overridden at initialization time
->>>>>>> .merge_file_6z4FFc
 		config = {
 
 			// The "normal" size of the presentation, aspect ratio will be preserved
@@ -242,16 +238,6 @@
 		if( !features.transforms2d && !features.transforms3d ) {
 			document.body.setAttribute( 'class', 'no-transforms' );
 
-<<<<<<< .merge_file_GEaPd7
-			// Since JS won't be running any further, we need to load all
-			// images that were intended to lazy load now
-			var images = document.getElementsByTagName( 'img' );
-			for( var i = 0, len = images.length; i < len; i++ ) {
-				var image = images[i];
-				if( image.getAttribute( 'data-src' ) ) {
-					image.setAttribute( 'src', image.getAttribute( 'data-src' ) );
-					image.removeAttribute( 'data-src' );
-=======
 			// Since JS won't be running any further, we load all lazy
 			// loading elements upfront
 			var images = toArray( document.getElementsByTagName( 'img' ) ),
@@ -264,7 +250,6 @@
 				if( element.getAttribute( 'data-src' ) ) {
 					element.setAttribute( 'src', element.getAttribute( 'data-src' ) );
 					element.removeAttribute( 'data-src' );
->>>>>>> .merge_file_6z4FFc
 				}
 			}
 
@@ -323,15 +308,11 @@
 
 		features.touch = !!( 'ontouchstart' in window );
 
-<<<<<<< .merge_file_GEaPd7
-		isMobileDevice = navigator.userAgent.match( /(iphone|ipod|ipad|android)/gi );
-=======
 		// Transitions in the overview are disabled in desktop and
 		// mobile Safari due to lag
 		features.overviewTransitions = !/Version\/[\d\.]+.*Safari/.test( navigator.userAgent );
 
 		isMobileDevice = /(iphone|ipod|ipad|android)/gi.test( navigator.userAgent );
->>>>>>> .merge_file_6z4FFc
 
 	}
 
@@ -818,11 +799,7 @@
 				var data = event.data;
 
 				// Make sure we're dealing with JSON
-<<<<<<< .merge_file_GEaPd7
-				if( data.charAt( 0 ) === '{' && data.charAt( data.length - 1 ) === '}' ) {
-=======
 				if( typeof data === 'string' && data.charAt( 0 ) === '{' && data.charAt( data.length - 1 ) === '}' ) {
->>>>>>> .merge_file_6z4FFc
 					data = JSON.parse( data );
 
 					// Check if the requested method can be found
@@ -1116,7 +1093,6 @@
 		element.style.WebkitTransform = transform;
 		element.style.MozTransform = transform;
 		element.style.msTransform = transform;
-		element.style.OTransform = transform;
 		element.style.transform = transform;
 
 	}
@@ -1160,11 +1136,7 @@
 	}
 
 	/**
-<<<<<<< .merge_file_GEaPd7
-	 * Measures the distance in pixels between point a and point b.
-=======
 	 * Converts various color input formats to an {r:0,g:0,b:0} object.
->>>>>>> .merge_file_6z4FFc
 	 *
 	 * @param {String} color The string representation of a color,
 	 * the following formats are supported:
@@ -1555,11 +1527,7 @@
 				dom.slides.style.top = '';
 				dom.slides.style.bottom = '';
 				dom.slides.style.right = '';
-<<<<<<< .merge_file_GEaPd7
-				transformElement( dom.slides, '' );
-=======
 				transformSlides( { layout: '' } );
->>>>>>> .merge_file_6z4FFc
 			}
 			else {
 				// Prefer zooming in desktop Chrome so that content remains crisp
@@ -1573,11 +1541,7 @@
 					dom.slides.style.top = '50%';
 					dom.slides.style.bottom = 'auto';
 					dom.slides.style.right = 'auto';
-<<<<<<< .merge_file_GEaPd7
-					transformElement( dom.slides, 'translate(-50%, -50%) scale('+ scale +')' );
-=======
 					transformSlides( { layout: 'translate(-50%, -50%) scale('+ scale +')' } );
->>>>>>> .merge_file_6z4FFc
 				}
 			}
 
@@ -1665,11 +1629,7 @@
 		};
 
 		// Reduce available space by margin
-<<<<<<< .merge_file_GEaPd7
-		size.presentationWidth -= ( size.presentationHeight * config.margin );
-=======
 		size.presentationWidth -= ( size.presentationWidth * config.margin );
->>>>>>> .merge_file_6z4FFc
 		size.presentationHeight -= ( size.presentationHeight * config.margin );
 
 		// Slide width may be a percentage of available width
@@ -1723,23 +1683,12 @@
 	}
 
 	/**
-<<<<<<< .merge_file_GEaPd7
-	 * Displays the overview of slides (quick nav) by
-	 * scaling down and arranging all slide elements.
-	 *
-	 * Experimental feature, might be dropped if perf
-	 * can't be improved.
-=======
 	 * Displays the overview of slides (quick nav) by scaling
 	 * down and arranging all slide elements.
->>>>>>> .merge_file_6z4FFc
 	 */
 	function activateOverview() {
 
 		// Only proceed if enabled in config
-<<<<<<< .merge_file_GEaPd7
-		if( config.overview ) {
-=======
 		if( config.overview && !isOverview() ) {
 
 			overview = true;
@@ -1752,72 +1701,10 @@
 					dom.wrapper.classList.add( 'overview-animated' );
 				}, 1 );
 			}
->>>>>>> .merge_file_6z4FFc
 
 			// Don't auto-slide while in overview mode
 			cancelAutoSlide();
 
-<<<<<<< .merge_file_GEaPd7
-			var wasActive = dom.wrapper.classList.contains( 'overview' );
-
-			// Vary the depth of the overview based on screen size
-			var depth = window.innerWidth < 400 ? 1000 : 2500;
-
-			dom.wrapper.classList.add( 'overview' );
-			dom.wrapper.classList.remove( 'overview-deactivating' );
-
-			var horizontalSlides = dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR );
-
-			for( var i = 0, len1 = horizontalSlides.length; i < len1; i++ ) {
-				var hslide = horizontalSlides[i],
-					hoffset = config.rtl ? -105 : 105;
-
-				hslide.setAttribute( 'data-index-h', i );
-
-				// Apply CSS transform
-				transformElement( hslide, 'translateZ(-'+ depth +'px) translate(' + ( ( i - indexh ) * hoffset ) + '%, 0%)' );
-
-				if( hslide.classList.contains( 'stack' ) ) {
-
-					var verticalSlides = hslide.querySelectorAll( 'section' );
-
-					for( var j = 0, len2 = verticalSlides.length; j < len2; j++ ) {
-						var verticalIndex = i === indexh ? indexv : getPreviousVerticalIndex( hslide );
-
-						var vslide = verticalSlides[j];
-
-						vslide.setAttribute( 'data-index-h', i );
-						vslide.setAttribute( 'data-index-v', j );
-
-						// Apply CSS transform
-						transformElement( vslide, 'translate(0%, ' + ( ( j - verticalIndex ) * 105 ) + '%)' );
-
-						// Navigate to this slide on click
-						vslide.addEventListener( 'click', onOverviewSlideClicked, true );
-					}
-
-				}
-				else {
-
-					// Navigate to this slide on click
-					hslide.addEventListener( 'click', onOverviewSlideClicked, true );
-
-				}
-			}
-
-			updateSlidesVisibility();
-
-			layout();
-
-			if( !wasActive ) {
-				// Notify observers of the overview showing
-				dispatchEvent( 'overviewshown', {
-					'indexh': indexh,
-					'indexv': indexv,
-					'currentSlide': currentSlide
-				} );
-			}
-=======
 			// Move the backgrounds element into the slide container to
 			// that the same scaling is applied
 			dom.slides.appendChild( dom.background );
@@ -1898,7 +1785,6 @@
 		var margin = 70;
 		var slideWidth = config.width + margin,
 			slideHeight = config.height + margin;
->>>>>>> .merge_file_6z4FFc
 
 		// Reverse in RTL mode
 		if( config.rtl ) {
@@ -1938,16 +1824,11 @@
 				dom.wrapper.classList.remove( 'overview-deactivating' );
 			}, 1 );
 
-<<<<<<< .merge_file_GEaPd7
-			// Select all slides
-=======
 			// Move the background element back out
 			dom.wrapper.appendChild( dom.background );
 
 			// Clean up changes made to slides
->>>>>>> .merge_file_6z4FFc
 			toArray( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) ).forEach( function( slide ) {
-				// Resets all transforms to use the external styles
 				transformElement( slide, '' );
 
 				slide.removeEventListener( 'click', onOverviewSlideClicked, true );
@@ -2002,11 +1883,7 @@
 	 */
 	function isOverview() {
 
-<<<<<<< .merge_file_GEaPd7
-		return dom.wrapper.classList.contains( 'overview' );
-=======
 		return overview;
->>>>>>> .merge_file_6z4FFc
 
 	}
 
@@ -2156,11 +2033,7 @@
 
 		// If no vertical index is specified and the upcoming slide is a
 		// stack, resume at its previous vertical index
-<<<<<<< .merge_file_GEaPd7
-		if( v === undefined ) {
-=======
 		if( v === undefined && !isOverview() ) {
->>>>>>> .merge_file_6z4FFc
 			v = getPreviousVerticalIndex( horizontalSlides[ h ] );
 		}
 
@@ -2210,15 +2083,9 @@
 			document.documentElement.classList.remove( stateBefore.pop() );
 		}
 
-<<<<<<< .merge_file_GEaPd7
-		// If the overview is active, re-activate it to update positions
-		if( isOverview() ) {
-			activateOverview();
-=======
 		// Update the overview if it's currently active
 		if( isOverview() ) {
 			updateOverview();
->>>>>>> .merge_file_6z4FFc
 		}
 
 		// Find the current horizontal slide and any possible vertical slides
@@ -2524,11 +2391,7 @@
 				viewDistance = isOverview() ? 6 : 2;
 			}
 
-<<<<<<< .merge_file_GEaPd7
-			// Limit view distance on weaker devices
-=======
 			// All slides need to be visible when exporting to PDF
->>>>>>> .merge_file_6z4FFc
 			if( isPrintingPDF() ) {
 				viewDistance = Number.MAX_VALUE;
 			}
@@ -2539,10 +2402,6 @@
 				var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) ),
 					verticalSlidesLength = verticalSlides.length;
 
-<<<<<<< .merge_file_GEaPd7
-				// Loops so that it measures 1 between the first and last slides
-				distanceX = Math.abs( ( ( indexh || 0 ) - x ) % ( horizontalSlidesLength - viewDistance ) ) || 0;
-=======
 				// Determine how far away this slide is from the present
 				distanceX = Math.abs( ( indexh || 0 ) - x ) || 0;
 
@@ -2551,7 +2410,6 @@
 				if( config.loop ) {
 					distanceX = Math.abs( ( ( indexh || 0 ) - x ) % ( horizontalSlidesLength - viewDistance ) ) || 0;
 				}
->>>>>>> .merge_file_6z4FFc
 
 				// Show the horizontal slide if it's within the view distance
 				if( distanceX < viewDistance ) {
@@ -2614,15 +2472,6 @@
 		// Update slide number if enabled
 		if( config.slideNumber && dom.slideNumber) {
 
-<<<<<<< .merge_file_GEaPd7
-			// Display the number of the page using 'indexh - indexv' format
-			var indexString = indexh;
-			if( indexv > 0 ) {
-				indexString += ' - ' + indexv;
-			}
-
-			dom.slideNumber.innerHTML = indexString;
-=======
 			// Default to only showing the current slide number
 			var format = 'c';
 
@@ -2635,7 +2484,6 @@
 												.replace( /v/g, indexv )
 												.replace( /c/g, getSlidePastCount() + 1 )
 												.replace( /t/g, getTotalSlides() );
->>>>>>> .merge_file_6z4FFc
 		}
 
 	}
@@ -2831,17 +2679,6 @@
 				backgroundHeight = parseInt( backgroundSize[1], 10 );
 			}
 
-<<<<<<< .merge_file_GEaPd7
-			var slideWidth = dom.background.offsetWidth;
-			var horizontalSlideCount = horizontalSlides.length;
-			var horizontalOffset = -( backgroundWidth - slideWidth ) / ( horizontalSlideCount-1 ) * indexh;
-
-			var slideHeight = dom.background.offsetHeight;
-			var verticalSlideCount = verticalSlides.length;
-			var verticalOffset = verticalSlideCount > 1 ? -( backgroundHeight - slideHeight ) / ( verticalSlideCount-1 ) * indexv : 0;
-
-			dom.background.style.backgroundPosition = horizontalOffset + 'px ' + verticalOffset + 'px';
-=======
 			var slideWidth = dom.background.offsetWidth,
 				horizontalSlideCount = horizontalSlides.length,
 				horizontalOffsetMultiplier,
@@ -2871,7 +2708,6 @@
 			verticalOffset = verticalSlideCount > 0 ?  verticalOffsetMultiplier * indexv * 1 : 0;
 
 			dom.background.style.backgroundPosition = horizontalOffset + 'px ' + -verticalOffset + 'px';
->>>>>>> .merge_file_6z4FFc
 
 		}
 
@@ -2888,11 +2724,7 @@
 		slide.style.display = 'block';
 
 		// Media elements with data-src attributes
-<<<<<<< .merge_file_GEaPd7
-		toArray( slide.querySelectorAll( 'img[data-src], video[data-src], audio[data-src], iframe[data-src]' ) ).forEach( function( element ) {
-=======
 		toArray( slide.querySelectorAll( 'img[data-src], video[data-src], audio[data-src]' ) ).forEach( function( element ) {
->>>>>>> .merge_file_6z4FFc
 			element.setAttribute( 'src', element.getAttribute( 'data-src' ) );
 			element.removeAttribute( 'data-src' );
 		} );
@@ -2950,11 +2782,7 @@
 					background.appendChild( video );
 				}
 				// Iframes
-<<<<<<< .merge_file_GEaPd7
-				else if ( backgroundIframe ) {
-=======
 				else if( backgroundIframe ) {
->>>>>>> .merge_file_6z4FFc
 					var iframe = document.createElement( 'iframe' );
 						iframe.setAttribute( 'src', backgroundIframe );
 						iframe.style.width  = '100%';
@@ -3053,29 +2881,12 @@
 		};
 
 		// YouTube frames must include "?enablejsapi=1"
-<<<<<<< .merge_file_GEaPd7
-		toArray( dom.slides.querySelectorAll( 'iframe[src*="youtube.com/embed/"]' ) ).forEach( function( el ) {
-			var src = el.getAttribute( 'src' );
-			if( !/enablejsapi\=1/gi.test( src ) ) {
-				el.setAttribute( 'src', src + ( !/\?/.test( src ) ? '?' : '&' ) + 'enablejsapi=1' );
-			}
-		});
-
-		// Vimeo frames must include "?api=1"
-		toArray( dom.slides.querySelectorAll( 'iframe[src*="player.vimeo.com/"]' ) ).forEach( function( el ) {
-			var src = el.getAttribute( 'src' );
-			if( !/api\=1/gi.test( src ) ) {
-				el.setAttribute( 'src', src + ( !/\?/.test( src ) ? '?' : '&' ) + 'api=1' );
-			}
-		});
-=======
 		_appendParamToIframeSource( 'src', 'youtube.com/embed/', 'enablejsapi=1' );
 		_appendParamToIframeSource( 'data-src', 'youtube.com/embed/', 'enablejsapi=1' );
 
 		// Vimeo frames must include "?api=1"
 		_appendParamToIframeSource( 'src', 'player.vimeo.com/', 'api=1' );
 		_appendParamToIframeSource( 'data-src', 'player.vimeo.com/', 'api=1' );
->>>>>>> .merge_file_6z4FFc
 
 	}
 
@@ -3095,35 +2906,11 @@
 
 			// HTML5 media elements
 			toArray( slide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-<<<<<<< .merge_file_GEaPd7
-				if( el.hasAttribute( 'data-autoplay' ) ) {
-=======
 				if( el.hasAttribute( 'data-autoplay' ) && typeof el.play === 'function' ) {
->>>>>>> .merge_file_6z4FFc
 					el.play();
 				}
 			} );
 
-<<<<<<< .merge_file_GEaPd7
-			// iframe embeds
-			toArray( slide.querySelectorAll( 'iframe' ) ).forEach( function( el ) {
-				el.contentWindow.postMessage( 'slide:start', '*' );
-			});
-
-			// YouTube embeds
-			toArray( slide.querySelectorAll( 'iframe[src*="youtube.com/embed/"]' ) ).forEach( function( el ) {
-				if( el.hasAttribute( 'data-autoplay' ) ) {
-					el.contentWindow.postMessage( '{"event":"command","func":"playVideo","args":""}', '*' );
-				}
-			});
-
-			// Vimeo embeds
-			toArray( slide.querySelectorAll( 'iframe[src*="player.vimeo.com/"]' ) ).forEach( function( el ) {
-				if( el.hasAttribute( 'data-autoplay' ) ) {
-					el.contentWindow.postMessage( '{"method":"play"}', '*' );
-				}
-			});
-=======
 			// Normal iframes
 			toArray( slide.querySelectorAll( 'iframe[src]' ) ).forEach( function( el ) {
 				startEmbeddedIframe( { target: el } );
@@ -3160,7 +2947,6 @@
 		// Generic postMessage API
 		else {
 			iframe.contentWindow.postMessage( 'slide:start', '*' );
->>>>>>> .merge_file_6z4FFc
 		}
 
 	}
@@ -3174,41 +2960,25 @@
 		if( slide && slide.parentNode ) {
 			// HTML5 media elements
 			toArray( slide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-<<<<<<< .merge_file_GEaPd7
-				if( !el.hasAttribute( 'data-ignore' ) ) {
-=======
 				if( !el.hasAttribute( 'data-ignore' ) && typeof el.pause === 'function' ) {
->>>>>>> .merge_file_6z4FFc
 					el.pause();
 				}
 			} );
 
-<<<<<<< .merge_file_GEaPd7
-			// iframe embeds
-=======
 			// Generic postMessage API for non-lazy loaded iframes
->>>>>>> .merge_file_6z4FFc
 			toArray( slide.querySelectorAll( 'iframe' ) ).forEach( function( el ) {
 				el.contentWindow.postMessage( 'slide:stop', '*' );
 				el.removeEventListener( 'load', startEmbeddedIframe );
 			});
 
-<<<<<<< .merge_file_GEaPd7
-			// YouTube embeds
-=======
 			// YouTube postMessage API
->>>>>>> .merge_file_6z4FFc
 			toArray( slide.querySelectorAll( 'iframe[src*="youtube.com/embed/"]' ) ).forEach( function( el ) {
 				if( !el.hasAttribute( 'data-ignore' ) && typeof el.contentWindow.postMessage === 'function' ) {
 					el.contentWindow.postMessage( '{"event":"command","func":"pauseVideo","args":""}', '*' );
 				}
 			});
 
-<<<<<<< .merge_file_GEaPd7
-			// Vimeo embeds
-=======
 			// Vimeo postMessage API
->>>>>>> .merge_file_6z4FFc
 			toArray( slide.querySelectorAll( 'iframe[src*="player.vimeo.com/"]' ) ).forEach( function( el ) {
 				if( !el.hasAttribute( 'data-ignore' ) && typeof el.contentWindow.postMessage === 'function' ) {
 					el.contentWindow.postMessage( '{"method":"pause"}', '*' );
@@ -3227,17 +2997,6 @@
 	}
 
 	/**
-<<<<<<< .merge_file_GEaPd7
-	 * Returns a value ranging from 0-1 that represents
-	 * how far into the presentation we have navigated.
-	 */
-	function getProgress() {
-
-		var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
-
-		// The number of past and total slides
-		var totalCount = getTotalSlides();
-=======
 	 * Returns the number of past slides. This can be used as a global
 	 * flattened index for slides.
 	 */
@@ -3246,7 +3005,6 @@
 		var horizontalSlides = toArray( dom.wrapper.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
 
 		// The number of past slides
->>>>>>> .merge_file_6z4FFc
 		var pastCount = 0;
 
 		// Step through all slides and count the past ones
@@ -3344,11 +3102,7 @@
 			// Ensure the named link is a valid HTML ID attribute
 			if( /^[a-zA-Z][\w:.-]*$/.test( name ) ) {
 				// Find the slide with the specified ID
-<<<<<<< .merge_file_GEaPd7
-				element = document.querySelector( '#' + name );
-=======
 				element = document.getElementById( name );
->>>>>>> .merge_file_6z4FFc
 			}
 
 			if( element ) {
@@ -3780,16 +3534,6 @@
 
 			// If there are media elements with data-autoplay,
 			// automatically set the autoSlide duration to the
-<<<<<<< .merge_file_GEaPd7
-			// length of that media
-			toArray( currentSlide.querySelectorAll( 'video, audio' ) ).forEach( function( el ) {
-				if( el.hasAttribute( 'data-autoplay' ) ) {
-					if( autoSlide && el.duration * 1000 > autoSlide ) {
-						autoSlide = ( el.duration * 1000 ) + 1000;
-					}
-				}
-			} );
-=======
 			// length of that media. Not applicable if the slide
 			// is divided up into fragments.
 			if( currentSlide.querySelectorAll( '.fragment' ).length === 0 ) {
@@ -3801,7 +3545,6 @@
 					}
 				} );
 			}
->>>>>>> .merge_file_6z4FFc
 
 			// Cue the next auto-slide if:
 			// - There is an autoSlide value
@@ -4358,14 +4101,10 @@
 		// If, after clicking a link or similar and we're coming back,
 		// focus the document.body to ensure we can use keyboard shortcuts
 		if( isHidden === false && document.activeElement !== document.body ) {
-<<<<<<< .merge_file_GEaPd7
-			document.activeElement.blur();
-=======
 			// Not all elements support .blur() - SVGs among them.
 			if( typeof document.activeElement.blur === 'function' ) {
 				document.activeElement.blur();
 			}
->>>>>>> .merge_file_6z4FFc
 			document.body.focus();
 		}
 

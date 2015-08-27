@@ -9,11 +9,7 @@ var staticDir	= express.static;
 io				= io.listen(app);
 
 var opts = {
-<<<<<<< .merge_file_z5neUN
-	port: 1948,
-=======
 	port: process.env.PORT || 1948,
->>>>>>> .merge_file_BB4ewr
 	baseDir : __dirname + '/../../'
 };
 

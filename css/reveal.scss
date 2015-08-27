@@ -57,18 +57,6 @@ body {
 	color: #000;
 }
 
-::-moz-selection {
-	background: #FF5E99;
-	color: #fff;
-	text-shadow: none;
-}
-
-::selection {
-	background: #FF5E99;
-	color: #fff;
-	text-shadow: none;
-}
-
 
 /*********************************************
  * VIEW FRAGMENTS
@@ -107,19 +95,7 @@ body {
 	transform: scale( 0.1 );
 
 	&.visible {
-<<<<<<< .merge_file_wvG9K4
-		transform: scale( 1 );
-	}
-}
-
-.reveal .slides section .fragment.roll-in {
-	transform: rotateX( 90deg );
-
-	&.visible {
-		transform: rotateX( 0 );
-=======
 		transform: none;
->>>>>>> .merge_file_vJFAzq
 	}
 }
 
@@ -452,41 +428,6 @@ body {
 
 
 /*********************************************
-<<<<<<< .merge_file_wvG9K4
- * SLIDE TRANSITION
- * Aliased 'linear' for backwards compatibility
- *********************************************/
-
-.reveal.slide section,
-.reveal.linear section {
-	backface-visibility: hidden;
-}
-
-.reveal .slides>section[data-transition=slide].past,
-.reveal.slide .slides>section:not([data-transition]).past,
-.reveal .slides>section[data-transition=linear].past,
-.reveal.linear .slides>section:not([data-transition]).past {
-	transform: translate(-150%, 0);
-}
-.reveal .slides>section[data-transition=slide].future,
-.reveal.slide .slides>section:not([data-transition]).future,
-.reveal .slides>section[data-transition=linear].future,
-.reveal.linear .slides>section:not([data-transition]).future {
-	transform: translate(150%, 0);
-}
-
-.reveal .slides>section>section[data-transition=slide].past,
-.reveal.slide .slides>section>section:not([data-transition]).past,
-.reveal .slides>section>section[data-transition=linear].past,
-.reveal.linear .slides>section>section:not([data-transition]).past {
-	transform: translate(0, -150%);
-}
-.reveal .slides>section>section[data-transition=slide].future,
-.reveal.slide .slides>section>section:not([data-transition]).future,
-.reveal .slides>section>section[data-transition=linear].future,
-.reveal.linear .slides>section>section:not([data-transition]).future {
-	transform: translate(0, 150%);
-=======
  * Mixins for readability of transitions
  *********************************************/
 
@@ -524,7 +465,6 @@ body {
 	.reveal.#{$style} .slides>section>section:not([data-transition]).future {
 		@content;
 	}
->>>>>>> .merge_file_vJFAzq
 }
 
 /*********************************************
@@ -555,32 +495,6 @@ body {
  * Aliased 'default' for backwards compatibility
  *********************************************/
 
-<<<<<<< .merge_file_wvG9K4
-.reveal .slides>section[data-transition=default].past,
-.reveal.default .slides>section:not([data-transition]).past,
-.reveal .slides>section[data-transition=convex].past,
-.reveal.convex .slides>section:not([data-transition]).past {
-	transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
-}
-.reveal .slides>section[data-transition=default].future,
-.reveal.default .slides>section:not([data-transition]).future,
-.reveal .slides>section[data-transition=convex].future,
-.reveal.convex .slides>section:not([data-transition]).future {
-	transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
-}
-
-.reveal .slides>section>section[data-transition=default].past,
-.reveal.default .slides>section>section:not([data-transition]).past,
-.reveal .slides>section>section[data-transition=convex].past,
-.reveal.convex .slides>section>section:not([data-transition]).past {
-	transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
-}
-.reveal .slides>section>section[data-transition=default].future,
-.reveal.default .slides>section>section:not([data-transition]).future,
-.reveal .slides>section>section[data-transition=convex].future,
-.reveal.convex .slides>section>section:not([data-transition]).future {
-	transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
-=======
 @each $stylename in default, convex {
 	@include transition-horizontal-past(#{$stylename}) {
 		transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
@@ -594,31 +508,12 @@ body {
 	@include transition-vertical-future(#{$stylename}) {
 		transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
 	}
->>>>>>> .merge_file_vJFAzq
 }
-
 
 /*********************************************
  * CONCAVE TRANSITION
  *********************************************/
 
-<<<<<<< .merge_file_wvG9K4
-.reveal .slides>section[data-transition=concave].past,
-.reveal.concave .slides>section:not([data-transition]).past {
-	transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
-}
-.reveal .slides>section[data-transition=concave].future,
-.reveal.concave .slides>section:not([data-transition]).future {
-	transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
-}
-
-.reveal .slides>section>section[data-transition=concave].past,
-.reveal.concave .slides>section>section:not([data-transition]).past {
-	transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
-}
-.reveal .slides>section>section[data-transition=concave].future,
-.reveal.concave .slides>section>section:not([data-transition]).future {
-=======
 @include transition-horizontal-past(concave) {
 	transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
 }
@@ -629,7 +524,6 @@ body {
 	transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
 }
 @include transition-vertical-future(concave) {
->>>>>>> .merge_file_vJFAzq
 	transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
 }
 
@@ -638,30 +532,6 @@ body {
  * ZOOM TRANSITION
  *********************************************/
 
-<<<<<<< .merge_file_wvG9K4
-.reveal .slides>section[data-transition=zoom],
-.reveal.zoom .slides>section:not([data-transition]) {
-	transition-timing-function: ease;
-}
-
-.reveal .slides>section[data-transition=zoom].past,
-.reveal.zoom .slides>section:not([data-transition]).past {
-	visibility: hidden;
-	transform: scale(16);
-}
-.reveal .slides>section[data-transition=zoom].future,
-.reveal.zoom .slides>section:not([data-transition]).future {
-	visibility: hidden;
-	transform: scale(0.2);
-}
-
-.reveal .slides>section>section[data-transition=zoom].past,
-.reveal.zoom .slides>section>section:not([data-transition]).past {
-	transform: translate(0, -150%);
-}
-.reveal .slides>section>section[data-transition=zoom].future,
-.reveal.zoom .slides>section>section:not([data-transition]).future {
-=======
 @include transition-global(zoom) {
 	transition-timing-function: ease;
 }
@@ -677,7 +547,6 @@ body {
 	transform: translate(0, -150%);
 }
 @include transition-vertical-future(zoom) {
->>>>>>> .merge_file_vJFAzq
 	transform: translate(0, 150%);
 }
 
@@ -846,61 +715,9 @@ body {
  * NO TRANSITION
  *********************************************/
 
-<<<<<<< .merge_file_wvG9K4
-.reveal .slides section[data-transition=none],
-.reveal.none .slides section:not([data-transition]) {
-=======
 @include transition-global(none) {
->>>>>>> .merge_file_vJFAzq
 	transform: none;
 	transition: none;
-}
-
-
-/*********************************************
- * OVERVIEW
- *********************************************/
-
-.reveal.overview .slides {
-	perspective-origin: 50% 50%;
-	perspective: 700px;
-}
-
-.reveal.overview .slides section {
-	height: 700px;
-	overflow: hidden;
-	opacity: 1 !important;
-	visibility: visible !important;
-	cursor: pointer;
-	background: rgba(0,0,0,0.1);
-	box-sizing: border-box;
-}
-.reveal.overview .slides section,
-.reveal.overview-deactivating .slides section {
-	transition: none !important;
-}
-.reveal.overview .slides section .fragment {
-	opacity: 1;
-}
-.reveal.overview .slides section:after,
-.reveal.overview .slides section:before {
-	display: none !important;
-}
-.reveal.overview .slides section>section {
-	opacity: 1;
-	cursor: pointer;
-}
-	.reveal.overview .slides section:hover {
-		background: rgba(0,0,0,0.3);
-	}
-	.reveal.overview .slides section.present {
-		background: rgba(0,0,0,0.3);
-	}
-.reveal.overview .slides>section.stack {
-	padding: 0;
-	top: 0 !important;
-	background: none;
-	overflow: visible;
 }
 
 
@@ -975,11 +792,7 @@ body {
  * PER-SLIDE BACKGROUNDS
  *********************************************/
 
-<<<<<<< .merge_file_wvG9K4
-.reveal>.backgrounds {
-=======
 .reveal .backgrounds {
->>>>>>> .merge_file_vJFAzq
 	position: absolute;
 	width: 100%;
 	height: 100%;
